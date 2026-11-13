@@ -120,6 +120,3 @@ published company reports.
 If you use this code or data, please cite the article. `CITATION.cff` has the
 details, and GitHub shows them under "Cite this repository".
 
-## Contact
-
-&lt;Author Name&gt;, &lt;affiliation&gt; — &lt;email&gt;. Questions and issues are welcome through GitHub Issues.
