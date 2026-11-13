@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use this code or data, please cite the article below."
+title: "llm-routing-cost-per-resolution"
+authors:
+  - family-names: "<Family name>"
+    given-names: "<Given name>"
+    orcid: "https://orcid.org/<0000-0000-0000-0000>"
+license: MIT
+repository-code: "https://github.com/<github-user>/llm-routing-cost-per-resolution"
+date-released: "2026-11-13"
+preferred-citation:
+  type: article
+  title: "Answer, Ask or Escalate: Token-Economic Routing of LLM Requests from People and Agents, with Evidence from Financial Reports"
+  authors:
+    - family-names: "<Family name>"
+      given-names: "<Given name>"
+  journal: "Journal of Artificial Intelligence Research"
+  year: 2026
+  notes: "Submitted"

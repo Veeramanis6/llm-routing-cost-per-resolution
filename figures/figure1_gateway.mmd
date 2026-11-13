@@ -1,0 +1,14 @@
+flowchart LR
+    R["Request<br/>(person or AI agent)"] --> G
+    subgraph G["Gateway"]
+        direction TB
+        E["Success estimators<br/>q̂ for six actions"] --> D["Decision rule<br/>minimise expected cost<br/>per resolved request"]
+    end
+    D -- "ask" --> Q["Clarifying question<br/>written by local model,<br/>answered by caller"]
+    Q -- "reply" --> D
+    D -- "answer" --> L["Local tier<br/>Llama 3.2 3B<br/>owned hardware"]
+    D -- "answer" --> P["Private cloud tier<br/>Llama 3.1 8B<br/>rented GPU"]
+    D -- "escalate" --> F["Frontier tier<br/>Claude Sonnet 5.5<br/>commercial API"]
+    L --> O["Response to caller<br/>failure: caller retries, cost δ<br/>asking: cost φ"]
+    P --> O
+    F --> O

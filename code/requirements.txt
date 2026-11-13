@@ -1,0 +1,9 @@
+openai>=1.40
+pyyaml
+numpy
+pandas
+scikit-learn
+sentence-transformers
+datasets
+anthropic
+matplotlib   # make_figures.py only

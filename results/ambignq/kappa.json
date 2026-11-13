@@ -1,0 +1,73 @@
+{
+  "local": {
+    "kind": "owned",
+    "model": "meta-llama/Llama-3.2-3B-Instruct",
+    "cost_basis": "marginal energy on existing hardware",
+    "hourly_cost_usd": {
+      "run": 0.009628,
+      "full_load": 0.009628
+    },
+    "hourly_cost_parts": {
+      "run": {
+        "power_kw": 0.0718,
+        "power_source": "measured GPU draw at concurrency 1",
+        "electricity_per_hour": 0.009628,
+        "other_per_hour": 0.0
+      },
+      "full_load": {
+        "power_kw": 0.0718,
+        "power_source": "measured GPU draw at concurrency 64",
+        "electricity_per_hour": 0.009628,
+        "other_per_hour": 0.0
+      }
+    },
+    "collection_start_utc": "2026-11-02T20:01:04.968000+00:00",
+    "collection_end_utc": "2026-11-02T20:07:05.957000+00:00",
+    "collection_hours": 0.1003,
+    "tokens_processed": 730262,
+    "run_tokens_per_second": 2022.95,
+    "full_load_concurrency": 64,
+    "full_load_tokens_per_second": 7476.0,
+    "gpu_power_watts": {
+      "light_load": 71.8,
+      "full_load": 71.8
+    },
+    "kappa_usd_per_million_tokens": {
+      "run": 0.001322,
+      "full_load": 0.000358
+    }
+  },
+  "private": {
+    "kind": "rented",
+    "model": "meta-llama/Llama-3.1-8B-Instruct",
+    "cost_basis": "rental price",
+    "hourly_cost_usd": {
+      "run": 0.9776,
+      "full_load": 0.9776
+    },
+    "hourly_cost_parts": {
+      "run": {
+        "gpu_hourly_usd": 0.9776
+      },
+      "full_load": {
+        "gpu_hourly_usd": 0.9776
+      }
+    },
+    "collection_start_utc": "2026-11-02T21:13:58.155000+00:00",
+    "collection_end_utc": "2026-11-02T21:16:53.156000+00:00",
+    "collection_hours": 0.0486,
+    "tokens_processed": 362226,
+    "run_tokens_per_second": 2069.85,
+    "full_load_concurrency": 64,
+    "full_load_tokens_per_second": 2749.88,
+    "gpu_power_watts": {
+      "light_load": 71.9,
+      "full_load": 71.9
+    },
+    "kappa_usd_per_million_tokens": {
+      "run": 0.131196,
+      "full_load": 0.098752
+    }
+  },
+  "note": "run-time kappa covers each tier's collection window only, not setup or idle time; the owned tier excludes hardware purchase (sunk) and host power beyond the GPU"
+}

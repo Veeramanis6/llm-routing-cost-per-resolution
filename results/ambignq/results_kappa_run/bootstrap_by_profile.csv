@@ -1,0 +1,13 @@
+comparison,mean_difference,ci_low,ci_high,profile,label,delta,phi
+router_with_ask minus always_frontier,0.04811150670488115,0.03674047112631353,0.059942732361463115,staff,Staff (business and financial operations wage),0.13813,0.099562
+router_with_ask minus always_local,-0.32882413881520034,-0.4367063347477342,-0.2436706394502456,staff,Staff (business and financial operations wage),0.13813,0.099562
+router_with_ask minus router_without_ask,0.045467732815801624,0.03431965302907934,0.056898937104133164,staff,Staff (business and financial operations wage),0.13813,0.099562
+router_with_ask minus always_frontier,0.025958762586699848,0.019792448731446286,0.03214844900516557,staff_low_wage,Staff (customer service wage),0.074835,0.05394
+router_with_ask minus always_local,-0.1777741414051589,-0.23605802925128663,-0.1316112523770487,staff_low_wage,Staff (customer service wage),0.074835,0.05394
+router_with_ask minus router_without_ask,0.024537880775903034,0.01846543833558805,0.030771647885536,staff_low_wage,Staff (customer service wage),0.074835,0.05394
+router_with_ask minus always_frontier,-0.0005130102944039801,-0.0006511100959132686,-0.00038038926423005387,agent_noticed,"Agent, failure noticed and retried",0.000168,0.00024
+router_with_ask minus always_local,7.558190913666445e-05,-2.7728319884684682e-05,0.00017801227435784763,agent_noticed,"Agent, failure noticed and retried",0.000168,0.00024
+router_with_ask minus router_without_ask,0.00017128639868729988,0.00011373490654201648,0.00023120954438911093,agent_noticed,"Agent, failure noticed and retried",0.000168,0.00024
+router_with_ask minus always_frontier,-0.6695089985460445,-1.0512545639815336,-0.337008998023779,agent_unnoticed,"Agent, failure found later by staff",3.311667,0.00024
+router_with_ask minus always_local,-9.730626787067173,-12.331870027026211,-7.630544523394982,agent_unnoticed,"Agent, failure found later by staff",3.311667,0.00024
+router_with_ask minus router_without_ask,-0.7334671457258595,-1.1128414903933925,-0.3837951108345942,agent_unnoticed,"Agent, failure found later by staff",3.311667,0.00024

@@ -1,0 +1,45 @@
+{
+  "profiles": {
+    "staff": {
+      "label": "Staff (business and financial operations wage)",
+      "delta": 0.168395,
+      "phi": 0.090484
+    },
+    "staff_low_wage": {
+      "label": "Staff (customer service wage)",
+      "delta": 0.091232,
+      "phi": 0.049022
+    },
+    "agent_noticed": {
+      "label": "Agent, failure noticed and retried",
+      "delta": 0.000221,
+      "phi": 0.000137
+    },
+    "agent_unnoticed": {
+      "label": "Agent, failure found later by staff",
+      "delta": 3.311667,
+      "phi": 0.000137
+    }
+  },
+  "basis": {
+    "seconds_to_answer_clarification": 8.2,
+    "seconds_to_retry": 15.25,
+    "words": {
+      "question": 11.15,
+      "clarifying_question": 17.14,
+      "reply_detail": 3.33,
+      "response": 9.03
+    },
+    "reading_wpm": 238.0,
+    "typing_wpm": 51.56,
+    "wages_usd_per_hour": {
+      "business_financial_operations": 39.74,
+      "customer_service_representatives": 21.53
+    },
+    "correction_minutes": 5.0,
+    "frontier_prices_per_mtok": [
+      2.0,
+      10.0
+    ]
+  }
+}

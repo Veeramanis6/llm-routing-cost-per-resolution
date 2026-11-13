@@ -1,0 +1,17 @@
+comparison,mean_difference,ci_low,ci_high,router,profile,label,delta,phi,natural_ambiguous_share
+router_with_ask minus always_frontier,0.02050115915668337,0.011690738674254736,0.03033082221822799,trained on sample,staff,Staff (business and financial operations wage),0.168395,0.090484,0.13
+router_with_ask minus router_without_ask,0.018306282403082175,0.009560114373634375,0.02789373464712251,trained on sample,staff,Staff (business and financial operations wage),0.168395,0.090484,0.13
+router_with_ask minus always_frontier,0.002043772276589304,-8.18774874871005e-05,0.005890077127150983,prior-corrected,staff,Staff (business and financial operations wage),0.168395,0.090484,0.13
+router_with_ask minus router_without_ask,-0.00013292800699140963,-0.00045264612412663444,0.0,prior-corrected,staff,Staff (business and financial operations wage),0.168395,0.090484,0.13
+router_with_ask minus always_frontier,0.01230421901488269,0.007178011349262352,0.017844035139646025,trained on sample,staff_low_wage,Staff (customer service wage),0.091232,0.049022,0.13
+router_with_ask minus router_without_ask,0.01032023000614959,0.005455306304441536,0.015477182639503097,trained on sample,staff_low_wage,Staff (customer service wage),0.091232,0.049022,0.13
+router_with_ask minus always_frontier,0.001943724594916699,2.5146503294885483e-05,0.004674771102036953,prior-corrected,staff_low_wage,Staff (customer service wage),0.091232,0.049022,0.13
+router_with_ask minus router_without_ask,0.0,0.0,0.0,prior-corrected,staff_low_wage,Staff (customer service wage),0.091232,0.049022,0.13
+router_with_ask minus always_frontier,-0.0021686436355676103,-0.002474641178701429,-0.0019078439236762607,trained on sample,agent_noticed,"Agent, failure noticed and retried",0.000221,0.000137,0.13
+router_with_ask minus router_without_ask,6.581803130645118e-05,1.2192296442966275e-05,0.00012101637777870773,trained on sample,agent_noticed,"Agent, failure noticed and retried",0.000221,0.000137,0.13
+router_with_ask minus always_frontier,-0.0021987743653087326,-0.0025016242358153933,-0.0019452479224446727,prior-corrected,agent_noticed,"Agent, failure noticed and retried",0.000221,0.000137,0.13
+router_with_ask minus router_without_ask,6.481021116358324e-06,-1.9945072930199375e-05,2.8839504316719434e-05,prior-corrected,agent_noticed,"Agent, failure noticed and retried",0.000221,0.000137,0.13
+router_with_ask minus always_frontier,-0.2822895477507999,-0.41567753553779396,-0.16021705758627522,trained on sample,agent_unnoticed,"Agent, failure found later by staff",3.311667,0.000137,0.13
+router_with_ask minus router_without_ask,-0.29597200769064874,-0.43253104175574925,-0.174583750642286,trained on sample,agent_unnoticed,"Agent, failure found later by staff",3.311667,0.000137,0.13
+router_with_ask minus always_frontier,-0.25188598978700555,-0.38769739372776435,-0.11680787597271335,prior-corrected,agent_unnoticed,"Agent, failure found later by staff",3.311667,0.000137,0.13
+router_with_ask minus router_without_ask,-0.29642526855725454,-0.435458180855268,-0.1719043514877151,prior-corrected,agent_unnoticed,"Agent, failure found later by staff",3.311667,0.000137,0.13

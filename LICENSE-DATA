@@ -1,0 +1,12 @@
+Data, results, audit sheets and figures in this repository
+(data/, results/, audit/, and figures/ except the Mermaid source figures/figure1_gateway.mmd)
+Copyright (c) 2026 <Author Name>
+
+Licensed under the Creative Commons Attribution 4.0 International licence (CC BY 4.0).
+You may share and adapt this material for any purpose, provided you give
+appropriate credit, link to the licence and indicate if changes were made.
+
+Full licence text: https://creativecommons.org/licenses/by/4.0/legalcode
+
+Exceptions: question, answer and report text taken from AmbigQA keeps its
+CC BY-SA 3.0 licence, and text taken from PACIFIC keeps its MIT licence.

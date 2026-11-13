@@ -1,0 +1,97 @@
+# Experiment configuration. Fill in every value marked TODO before running.
+# Prices are in US dollars per 1,000,000 tokens.
+
+# Where the self-hosted models ran. The scripts also detect CPU, RAM, GPU and
+# library versions on their own and save them in manifest_*.json.
+hardware:
+  provider: Amazon Web Services (EC2)
+  instance: g6.2xlarge, us-east-1, 1x NVIDIA L4, 8 vCPU, 32 GiB   # the instance used; change the region if you launch elsewhere
+  gpu_hourly_usd: TODO  # on-demand price on the day you launch (0.9776 for g6.2xlarge in us-east-1, AWS, 2 Nov 2026)
+  serving: vLLM          # exact version is recorded in the manifests
+
+# The three tiers the router chooses between.
+#   kind owned   self-hosted on existing hardware the firm owns: marginal energy cost
+#   kind rented  self-hosted on hardware rented by the hour: cost from gpu_hourly_usd
+#   kind api     commercial API billed per token: posted prices
+# Self-hosted prices stay TODO here; kappa.py measures them and writes
+# runs/<dataset>/config_kappa_full_load.yaml and config_kappa_run.yaml.
+tiers:
+  - key: local
+    label: Local (existing on-premises hardware)
+    kind: owned
+    name: meta-llama/Llama-3.2-3B-Instruct   # exactly as passed to "vllm serve"
+    revision: TODO        # commit hash from the model's "Files and versions" page
+    base_url: http://localhost:8000/v1
+    api_key_env: SMALL_API_KEY
+    price_in: TODO
+    price_out: TODO
+  - key: private
+    label: Private cloud (rented GPU)
+    kind: rented
+    name: meta-llama/Llama-3.1-8B-Instruct
+    revision: TODO
+    base_url: http://localhost:8000/v1
+    api_key_env: SMALL_API_KEY
+    price_in: TODO
+    price_out: TODO
+  - key: frontier
+    label: Frontier API (Claude Sonnet 5.5)
+    kind: api
+    provider: anthropic   # native Claude API (Messages); the OpenAI-compatible layer is meant for testing
+    name: claude-sonnet-5-5
+    api_key_env: ANTHROPIC_API_KEY
+    effort: low           # output_config.effort; default is high. Thinking is billed as output
+    max_tokens: 1024      # room for any thinking plus the short answer; billed only for tokens used
+    price_in: 2.0         # Claude pricing page, checked 30 Oct 2026: Sonnet 5.5 $2 / $10 per MTok
+    price_out: 10.0
+
+clarifier: local        # the tier that writes the clarifying questions
+
+# Local tier: existing on-premises hardware with spare capacity (stated assumption).
+# The purchase price is sunk, so a routed request costs only the energy it uses:
+#   hourly cost = power x electricity price + other.
+# Power is the GPU draw measured by benchmark.py; host power beyond the GPU is
+# excluded and covered by the owned_cost_scale sweep in the analysis.
+owned_hardware:
+  power_kw: null              # null = use the measured GPU draw; a number overrides it
+  electricity_usd_per_kwh: 0.1341   # EIA Electric Power Monthly, Table 5.3: US commercial
+                                    # average 2025, 13.41 cents/kWh (preliminary)
+  other_hourly_usd: 0
+
+# The two experiments. Each runs separately into runs/<key>/.
+datasets:
+  ambignq:
+    source: ambignq
+    local_json: null      # path to AmbigNQ train_light.json; null = download from Hugging Face
+    split: train
+    n_items: 2000
+    seed: 13
+    max_tokens: 64        # answer cap for self-hosted tiers
+  pacific:
+    source: pacific
+    path: PACIFIC/data/pacific     # folder with train.json and validation.json (git clone of
+                                   # github.com/dengyang17/PACIFIC); test answers are not public
+    splits: [train, validation]
+    n_items: 1000
+    ambiguous_share: 0.5
+    natural_ambiguous_share: 0.13  # 2,462 of 19,008 turns need clarification (Deng et al., 2022)
+    seed: 13
+    max_tokens: 128       # some answers list several items
+
+generation:
+  temperature: 0          # self-hosted tiers only; Claude 4.7+ rejects temperature below 1
+
+economics:
+  delta: 0.01           # dollar cost of one failed attempt (user time): placeholder
+  phi: 0.002            # dollar friction cost of one clarifying question: placeholder
+  delta_grid: [0, 0.001, 0.005, 0.01, 0.05, 0.1]
+  phi_grid: [0, 0.0005, 0.002, 0.01, 0.05]
+  price_scale_grid: [0.1, 0.3, 1, 3, 10]     # multiplies the API tier's prices
+  utilization_grid: [0.1, 0.25, 0.5, 1.0]    # self-hosted cost per token = full-load cost / utilization
+  owned_cost_scale_grid: [1, 2, 4, 8]        # multiplies the owned tier's cost (host power, cooling, overheads not measured)
+
+router:
+  embedding_model: sentence-transformers/all-MiniLM-L6-v2   # "tfidf" is for smoke tests only
+  test_fraction: 0.3
+  seeds: [1, 2, 3, 4, 5]
+  bootstrap_samples: 2000
